@@ -1,0 +1,341 @@
+===============================================================================
+11/11/16 Tinker calulations that need to be performed
+===============================================================================
+
+Analyze seems to be the main tool to gather alot of the information including:
+    Parameter definitions that are used
+    Geometric values (Bond Distances,Angles,Torsions)
+    Energies
+
+>> analyze test2.xyz -k test2.q2mm.key P all
+
+------------------------------------------------------------------------------
+Interactions and Sites :
+
+ Bond Stretches                                 4
+ Angle Bends                                    6
+ Van der Waals Sites                            5
+
+ Atom Type Definition Parameters :
+
+   Atom  Symbol  Type  Class  Atomic   Mass  Valence  Description
+
+     1     C      165    165     6    12.000    4     Methane-C Param OPT     
+     2     H      166    166     1     1.008    1     Methane-H Param OPT     
+     3     H      166    166     1     1.008    1     Methane-H Param OPT     
+     4     H      166    166     1     1.008    1     Methane-H Param OPT     
+     5     H      166    166     1     1.008    1     Methane-H Param OPT     
+
+ Van der Waals Parameters :
+
+          Atom Number       Size   Epsilon   Size 1-4   Eps 1-4   Reduction
+
+     1        1           2.0400    0.0270
+     2        2           1.6200    0.0200                          0.9230
+     3        3           1.6200    0.0200                          0.9230
+     4        4           1.6200    0.0200                          0.9230
+     5        5           1.6200    0.0200                          0.9230
+
+ Bond Stretching Parameters :
+
+          Atom Numbers                         KS       Bond
+
+     1        1     2                        4.740    1.1120
+     2        1     3                        4.740    1.1120
+     3        1     4                        4.740    1.1120
+     4        1     5                        4.740    1.1120
+
+ Angle Bending Parameters :
+
+             Atom Numbers                      KB      Angle   Fold    Type
+
+     1        2     1     3                  0.550   109.470
+     2        2     1     4                  0.550   109.470
+     3        2     1     5                  0.550   109.470
+     4        3     1     4                  0.550   109.470
+     5        3     1     5                  0.550   109.470
+     6        4     1     5                  0.550   109.470
+-------------------------------------------------------------------------------
+
+>> analyze test2.xyz -k test2.q2mm.key D
+
+------------------------------------------------------------------------------
+ Individual Bond Stretching Interactions :
+
+ Type             Atom Names                    Ideal    Actual      Energy
+
+ Bond           1-C       2-H                  1.1120    1.1189      0.0160
+ Bond           1-C       3-H                  1.1120    1.5259     34.7286
+ Bond           1-C       4-H                  1.1120    1.5261     34.7520
+ Bond           1-C       5-H                  1.1120    1.5260     34.7403
+
+ Individual Angle Bending Interactions :
+
+ Type                 Atom Names                Ideal    Actual      Energy
+
+ Angle          2-H       1-C       3-H      109.4700  109.4712      0.0000
+ Angle          2-H       1-C       4-H      109.4700  109.4697      0.0000
+ Angle          2-H       1-C       5-H      109.4700  109.4728      0.0000
+ Angle          3-H       1-C       4-H      109.4700  109.4743      0.0000
+ Angle          3-H       1-C       5-H      109.4700  109.4728      0.0000
+ Angle          4-H       1-C       5-H      109.4700  109.4666      0.0000
+
+ Total Potential Energy :                104.2369 Kcal/mole
+
+ Energy Component Breakdown :           Kcal/mole      Interactions
+
+ Bond Stretching                         104.2369              4
+ Angle Bending                             0.0000              6
+------------------------------------------------------------------------------
+
+>> analyze test2.xyz -k test2.q2mm.key M
+
+------------------------------------------------------------------------------
+ Total Electric Charge :                  0.00000 Electrons
+
+ Dipole Moment Magnitude :                  0.000 Debyes
+
+ Dipole X,Y,Z-Components :                  0.000       0.000       0.000
+
+ Quadrupole Moment Tensor :                 0.000       0.000       0.000
+      (Buckinghams)                         0.000       0.000       0.000
+                                            0.000       0.000       0.000
+
+ Principal Axes Quadrupole :                0.000       0.000       0.000
+
+ Dielectric Constant :                      1.500
+ Effective Total Charge :                 0.00000 Electrons
+ Effective Dipole Moment :                  0.000 Debyes
+
+ Radius of Gyration :                       1.281 Angstroms
+
+ Moments of Inertia and Principal Axes :
+
+             Moments (amu Ang^2)          X-, Y- and Z-Components of Axes
+
+                      5.163              0.707031   -0.707182   -0.000013
+                      5.164             -0.408339   -0.408267    0.816442
+                      6.259             -0.577378   -0.577245   -0.577427
+
+ Internal Virial Tensor :                 310.496    -101.223    -101.281
+                                         -101.223     310.529    -101.151
+                                         -101.281    -101.151     310.464
+-------------------------------------------------------------------------------
+
+The tinker equivalent of the macromodel *mmo file shoule be given as:
+>> analyze test2.xyz -k test2.q2mm.key M,D,P All
+
+As for vibrational analysis, the vibrate command is used, and perhaps vibrot 
+can be used for torsional normal modes. This also outputs several test2.XXX
+files that correspond to the individual normal mode motions.
+
+>> vibrate test2.xyz -k test2.q2mm.key All
+
+------------------------------------------------------------------------------
+ HESSIAN  --        105 Elements   100.00 % Off-diag H    0.01 % Storage
+
+ Eigenvalues of the Hessian Matrix :
+
+    1     0.000    2     0.000    3     0.000    4    71.132    5    71.142
+    6   132.602    7   225.599    8   225.618    9   346.870   10   346.905
+   11   347.696   12   959.718   13  2297.793   14  3060.139   15  3061.133
+
+ Vibrational Frequencies (cm-1) :
+
+    1     0.000    2     0.000    3     0.001    4   897.655    5   897.716
+    6  1245.491    7  1573.908    8  1573.973    9  1663.464   10  1663.639
+   11  1672.161   12  2866.074   13  3778.983   14  3928.337   15  3929.162
+
+ Vibrational Normal Mode     1 with Frequency      0.000 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.399283    0.068477    0.189431
+        2    0.399283    0.068477    0.189431
+        3    0.399283    0.068477    0.189431
+        4    0.399283    0.068477    0.189431
+        5    0.399283    0.068477    0.189431
+
+ Vibrational Normal Mode     2 with Frequency      0.000 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.010405    0.413004   -0.171229
+        2    0.010405    0.413004   -0.171229
+        3    0.010405    0.413004   -0.171229
+        4    0.010405    0.413004   -0.171229
+        5    0.010405    0.413004   -0.171229
+
+ Vibrational Normal Mode     3 with Frequency      0.001 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.232722    0.338370    0.177048
+        2    0.232722    0.338370    0.177048
+        3    0.232722    0.338370    0.177048
+        4    0.232722    0.338370    0.177048
+        5    0.232722    0.338370    0.177048
+
+ Vibrational Normal Mode     4 with Frequency    897.655 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.000579    0.023250   -0.023839
+        2   -0.014681   -0.587192    0.601859
+        3    0.176378    0.310975    0.085208
+        4    0.007755    0.091119   -0.084611
+        5   -0.176348   -0.091685   -0.318661
+
+ Vibrational Normal Mode     5 with Frequency    897.716 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.027196    0.014092    0.013090
+        2    0.686539   -0.355947   -0.330602
+        3    0.004080    0.188510    0.154487
+        4   -0.363417   -0.150954   -0.154741
+        5   -0.003441    0.150635    0.175023
+
+ Vibrational Normal Mode     6 with Frequency   1245.491 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.000012    0.000013   -0.000025
+        2   -0.000054   -0.000030    0.000083
+        3   -0.408406    0.000003    0.408379
+        4    0.000034    0.408086   -0.408122
+        5    0.408280   -0.408217   -0.000038
+
+ Vibrational Normal Mode     7 with Frequency   1573.908 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.002882   -0.059835    0.062631
+        2    0.016242    0.344450   -0.360818
+        3    0.362565    0.405792    0.188913
+        4    0.019398    0.175430   -0.149139
+        5   -0.363895   -0.213346   -0.424559
+
+ Vibrational Normal Mode     8 with Frequency   1573.973 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.070704    0.037889    0.032996
+        2    0.407157   -0.217642   -0.189239
+        3   -0.036640   -0.256736   -0.312194
+        4    0.478709    0.319260    0.331952
+        5   -0.007516   -0.295948   -0.223330
+
+ Vibrational Normal Mode     9 with Frequency   1663.464 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.049164    0.006189    0.042560
+        2   -0.069255    0.008790    0.059812
+        3    0.536898    0.035217   -0.517674
+        4   -0.262581    0.139004   -0.279230
+        5    0.380220   -0.256695    0.230424
+
+ Vibrational Normal Mode    10 with Frequency   1663.639 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.021296    0.052727   -0.032323
+        2   -0.029925    0.073685   -0.045167
+        3    0.013532    0.286346    0.139850
+        4   -0.110524   -0.517753    0.459408
+        5    0.380445   -0.469982   -0.169296
+
+ Vibrational Normal Mode    11 with Frequency   1672.161 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.065820    0.066185    0.065910
+        2    0.104014    0.105341    0.104592
+        3   -0.200333   -0.484424   -0.201928
+        4   -0.487987   -0.204311   -0.200646
+        5   -0.199266   -0.204526   -0.486665
+
+ Vibrational Normal Mode    12 with Frequency   2866.074 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.048899    0.048904    0.048903
+        2   -0.570163   -0.570165   -0.570169
+        3    0.027127   -0.066222    0.027126
+        4   -0.066198    0.027082    0.027080
+        5    0.027107    0.027108   -0.066212
+
+ Vibrational Normal Mode    13 with Frequency   3778.983 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.032651   -0.032119   -0.032389
+        2    0.036517    0.036456    0.036487
+        3    0.337894   -0.325167    0.337843
+        4   -0.322057    0.334796    0.334815
+        5    0.336348    0.336279   -0.323562
+
+ Vibrational Normal Mode    14 with Frequency   3928.337 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1   -0.020236    0.078665   -0.058154
+        2    0.002026   -0.008260    0.005970
+        3    0.444591   -0.456203    0.451380
+        4    0.119197   -0.129364   -0.104845
+        5   -0.324912   -0.342660    0.339805
+
+ Vibrational Normal Mode    15 with Frequency   3929.162 cm-1
+
+     Atom     Delta X     Delta Y     Delta Z
+
+        1    0.078899   -0.021982   -0.057185
+        2   -0.008125    0.002362    0.006021
+        3   -0.136303    0.126438   -0.111951
+        4   -0.460530    0.449181    0.455436
+        5   -0.334314   -0.316292    0.331264
+
+ TINKER is Exiting following Normal Termination of the Program
+------------------------------------------------------------------------------
+
+
+===============================================================================
+11/16/16 Planning the code route
+===============================================================================
+
+While macromodel has a comment column to provide the OPT keyword when grabbing
+data, I think the best way to handle this in tinker is to have another file
+that has all of those parameters there. When the code is grabbing data, it 
+will only pick up data that is matched in the parameters file that matches 
+the atom types in the bond, angle, torsion.
+
+===============================================================================
+12/07/16 
+==============================================================================
+
+3 terminals open 
+1: Testing tinker "python ../q2mm/calculate.py -tb test2.xyz" in tinker_test
+2: Filetypes.py in tinker_test
+3: filetypes.py on local machine
+
+===============================================================================
+12/08/16 
+==============================================================================
+
+I can now calculate sp data for tinker structures. Looking at how macromodel is
+setup in the code, one calculation is ran for each file. So for a freq calc
+and also a minimization and also a sp, the command file is set up to run a freq
+calculation, then ELST, followed by minimization and another ELST of that
+structure. Therefore we will probably have to do the same thing with tinker.
+Ideally it would be great if I could figure out if tinker allows for a written
+output file, otherwise we will have to us shell=True for the subprocess command
+inorder to write to a file (command > logfile) and append to a file (command >>
+logfile)
+
+Also in ~/q2mm/ there is a script tinker.py that has various code to pull info
+from the xyz file
+
+
+
+

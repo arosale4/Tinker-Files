@@ -1,0 +1,9 @@
+This directory contains files that are needed to run for a Q2MM parameterization
+using tinker.
+
+test2.xyz is a input file for ethane
+test2.q2mm.key is the key file that refrences two parameter files
+mm3opt.prm is the parameter file for new parameters that are in test2.xyz
+
+
+

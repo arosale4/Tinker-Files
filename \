@@ -1,0 +1,15 @@
+import subprocess as sp
+
+class Tinker(object):
+	def __init__(self, path):
+		super(Tinker, self).__init__(path)
+		self.name_key = self + '.q2mm.key'
+		self.name_log = self + '.q2mm.log'
+
+	@staticmethod
+	def run(self):
+		print 'analyze {} -k {} P,D >{}'.format(self,self.name_key,self.name_log)
+		sp.check_output('analyze {} -k {} P,D > {}'.format(
+			self,self.name_key,self.name_log))			
+
+
