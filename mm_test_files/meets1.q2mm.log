@@ -1,0 +1,64 @@
+ 
+ JobID: crcfe01-0-5891ef10
+ BatchMin V10.9    Build  109014  Starting Time 01-Feb-2017 09:22:09
+ MacroModel. Copyright Schrodinger, LLC.
+ All rights reserved.
+
+ Input filename:  meets1.mae
+ Output filename: meets1.q2mm.mae
+ Turning on debug switch          57
+ Atom-type file: ./atom.typ
+ Force field: ./mm3.fld
+ Read    40 atoms. Structure name, if any, appears on next line: 
+ meets1
+ Quality of Force Field Parameters in Use:
+   Numbers of high, medium and low quality stretch parameters =    5    2    4
+     Low quality stretch on force field line   63
+     Low quality stretch on force field line   75
+     Low quality stretch on force field line   86
+   Numbers of high, medium and low quality bend parameters    =   19    6    4
+     Low quality bend on force field line     251
+     Low quality bend on force field line     253
+     Low quality bend on force field line     412
+   Numbers of high, medium and low quality torsion parameters =   21    0   15
+     Low quality torsion on force field line  540
+     Low quality torsion on force field line  573
+     Low quality torsion on force field line  663
+     Low quality torsion on force field line  678
+     Low quality torsion on force field line  682
+     Low quality torsion on force field line  946
+     Low quality torsion on force field line  947
+     Low quality torsion on force field line  972
+     Low quality torsion on force field line  978
+   Interactions examined:        263 of        263 total, including unused params.
+ WARNING - Conformational Energies May Not Be Accurate
+      Stretch total=       44   constrained=        0
+         Bend total=       82   constrained=        0        linear=        0
+      Torsion total=      125   constrained=        0  out-of-plane=       11
+    Nonbonded total=      612      H-bonded=        0      ordinary=      612
+  Nonbonded cutoffs: CutVdw=   7.00    ;  CutEs=   12.0    
+ Starting conjugate gradient minimization.
+ Minimization converged; gradient = 0.354E-01 .LT.  0.500E-01
+ Iterations =         190  out of          500
+ Conf    1 E =     592.916 (  0.035) kJ/mol
+
+Total energy:             592.9159 kJ/mol (     141.7103 kcal/mol )
+ Force-field terms:       592.9159 kJ/mol (     141.7103 kcal/mol )
+  Stretch:                 22.7449 kJ/mol (       5.4362 kcal/mol )
+  Bend:                    47.1194 kJ/mol (      11.2618 kcal/mol )
+  Proper torsion:         101.8263 kJ/mol (      24.3371 kcal/mol )
+  Out-of-plane:             0.0200 kJ/mol (       0.0048 kcal/mol )
+  Stretch-bend:            -1.2188 kJ/mol (      -0.2913 kcal/mol )
+  Bend-bend:                0.0438 kJ/mol (       0.0105 kcal/mol )
+  Torsion-stretch:         -0.6390 kJ/mol (      -0.1527 kcal/mol )
+  Van der Waals:           27.2759 kJ/mol (       6.5191 kcal/mol )
+  Electrostatic:          395.7434 kJ/mol (      94.5849 kcal/mol )
+  Hydrogen bonding:         0.0000 kJ/mol (       0.0000 kcal/mol )
+ Total Energy =     592.916 kJ/mol
+ Total number of structures processed =           1
+ 
+BatchMin: normal termination                           01-Feb-2017 09:22:09
+
+real	0m0.241s
+user	0m0.149s
+sys	0m0.059s
